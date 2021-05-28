@@ -426,6 +426,13 @@ class CanineModel:
           activation=bert_modeling.get_activation(self.config.hidden_act),
           name="conv")
       result = bert_modeling.layer_norm(result)
+
+      result = tf.Print(result,
+                                  [result],
+                                  "result after layer norm",
+                                  summarize=-1
+      )
+
       if self._is_training:
         result = bert_modeling.dropout(result,
                                        self.config.hidden_dropout_prob)
