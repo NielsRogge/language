@@ -479,6 +479,13 @@ class CanineModel:
       # to the first token. We assume that this has been pre-trained.
       # This snippet is taken from vanilla BERT.
       first_token_tensor = tf.squeeze(seq_to_pool[:, 0:1, :], axis=1)
+
+      first_token_tensor = tf.Print(first_token_tensor,
+                                  [first_token_tensor],
+                                  "first_token_tensor",
+                                  summarize=-1
+      )
+
       return tf.layers.dense(
           first_token_tensor,
           self.config.hidden_size,
