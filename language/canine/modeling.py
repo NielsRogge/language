@@ -430,7 +430,7 @@ class CanineModel:
       result = tf.Print(result,
                                   [result],
                                   "result after layer norm",
-                                  summarize=-1
+                                  #summarize=-1
       )
 
       if self._is_training:
@@ -490,7 +490,7 @@ class CanineModel:
       first_token_tensor = tf.Print(first_token_tensor,
                                   [first_token_tensor],
                                   "first_token_tensor",
-                                  summarize=-1
+                                  #summarize=-1
       )
 
       return tf.layers.dense(
