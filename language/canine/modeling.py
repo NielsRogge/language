@@ -273,6 +273,12 @@ class CanineModel:
           num_hashes=self.config.num_hash_functions,
           num_buckets=self.config.num_hash_buckets,
           initializer_range=self.config.initializer_range)
+      
+      embed_seq = tf.Print(embed_seq,
+                            [tf.math.reduce_sum(embed_seq)],
+                            "Sum of embed_seq",
+                            summarize=-1)
+      
       dropout_prob = self.config.hidden_dropout_prob
       if self._is_training:
         dropout_prob = 0.0
