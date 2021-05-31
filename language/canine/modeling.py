@@ -222,6 +222,16 @@ class CanineModel:
           input_char_encoding,
           expected_molecule_seq_length=molecule_seq_length)
 
+    init_molecule_encoding = tf.Print(init_molecule_encoding,
+                                  [init_molecule_encoding[0,:3,:3]],
+                                  "Sum of init_molecule_encoding"
+    )
+    
+    init_molecule_encoding = tf.Print(init_molecule_encoding,
+                                  [tf.math.reduce_sum(init_molecule_encoding)],
+                                  "Sum of init_molecule_encoding"
+    )
+    
     bert_layers: Sequence[tf.Tensor] = self._bert_stack(
         molecules_in=init_molecule_encoding,
         attention_mask=molecule_attention_mask)
