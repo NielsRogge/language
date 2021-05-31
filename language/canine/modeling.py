@@ -155,6 +155,12 @@ class CanineModel:
                                   "Shapes of atom_input_ids and atom_input_mask:",
                                   summarize=-1
     )
+
+    atom_input_ids = tf.Print(atom_input_ids,
+                                  [atom_input_ids],
+                                  "atom_input_ids",
+                                  summarize=-1
+    )
     
     # The following lines have dimensions: <float>[batch, char_seq, char_dim].
     input_char_embedddings = self._embed_chars(
