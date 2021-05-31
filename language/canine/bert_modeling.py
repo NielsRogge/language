@@ -497,6 +497,10 @@ def embedding_postprocessor(input_tensor,
         name=token_type_embedding_name,
         shape=[token_type_vocab_size, width],
         initializer=create_initializer(initializer_range))
+    
+    token_type_ids = tf.Print(token_type_ids, [tf.math.reduce_sum(token_type_ids)], 
+                        "sum of token type ids", summarize=-1)
+    
     # This vocab will be small so we always do one-hot here, since it is always
     # faster for a small vocabulary.
     flat_token_type_ids = tf.reshape(token_type_ids, [-1])
