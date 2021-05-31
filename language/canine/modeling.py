@@ -256,6 +256,11 @@ class CanineModel:
     # character position.
     self.pooled = self._pool(bert_molecule_encoding)
 
+    self.pooled = tf.Print(self.pooled,
+                                  [self.pooled],
+                                  "Pooler output"
+    )
+
     self.molecule_seq_length = molecule_seq_length
     self.downsampled_layers = bert_layers
 
@@ -520,7 +525,7 @@ class CanineModel:
       else:
         query_seq = final_char_seq
 
-      return bert_modeling.transformer_model(
+      output = bert_modeling.transformer_model(
           input_tensor=query_seq,
           input_kv_tensor=final_char_seq,
           attention_mask=char_attention_mask,
@@ -534,6 +539,12 @@ class CanineModel:
           attention_probs_dropout_prob=(
               self.config.attention_probs_dropout_prob),
           initializer_range=self.config.initializer_range)
+
+      output = tf.Print(output, [output[0,:3,:3]], "output", summarize=-1)
+
+      output = tf.Print(output, [tf.math.reduce_sum(output)], "sum of output", summarize=-1)
+      
+      return output
 
   @tc.contract(
       tc.Require("seq_to_pool",
