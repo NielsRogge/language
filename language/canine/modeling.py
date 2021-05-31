@@ -110,6 +110,12 @@ class CanineModel:
         <int32>[batch_size, max_predictions_per_seq]
     """
 
+    atom_input_mask = tf.Print(atom_input_mask,
+                                  [atom_input_mask],
+                                  "atom_input_mask",
+                                  summarize=-1
+    )
+    
     self.config: CanineModelConfig = config
     self._is_training: bool = is_training
 
@@ -162,11 +168,6 @@ class CanineModel:
                                   summarize=-1
     )
 
-    atom_input_mask = tf.Print(atom_input_mask,
-                                  [atom_input_mask],
-                                  "atom_input_mask",
-                                  summarize=-1
-    )
 
     atom_segment_ids = tf.Print(atom_segment_ids,
                                   [atom_segment_ids],
