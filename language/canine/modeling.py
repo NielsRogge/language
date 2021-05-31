@@ -170,6 +170,11 @@ class CanineModel:
                                   [input_char_embedddings],
                                   "input_char_embedddings"
     )
+
+    input_char_embedddings = tf.Print(input_char_embedddings,
+                                  [tf.math.reduce_sum(input_char_embedddings)],
+                                  "Sum of input_char_embeddings"
+    )
     
     # Contextualize character embeddings.
     input_char_encoding = self._encode_initial_chars(input_char_embedddings,
@@ -178,6 +183,11 @@ class CanineModel:
     input_char_encoding = tf.Print(input_char_encoding,
                                   [input_char_encoding],
                                   "input_char_encoding"
+    )
+
+    input_char_encoding = tf.Print(input_char_encoding,
+                                  [tf.math.reduce_sum(input_char_encoding)],
+                                  "Sum of input_char_encoding"
     )
     
     # Downsample chars to molecules.
