@@ -151,8 +151,8 @@ class CanineModel:
 
     atom_input_ids = tf.Print(atom_input_ids,
                                   [tf.shape(atom_input_ids),
-                                  tf.shape(attention_mask)],
-                                  "Shapes of atom_input_ids and attention_mask:",
+                                  tf.shape(atom_input_mask)],
+                                  "Shapes of atom_input_ids and atom_input_mask:",
                                   summarize=-1
     )
     
