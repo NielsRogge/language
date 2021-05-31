@@ -179,7 +179,7 @@ class CanineModel:
         codepoints=atom_input_ids, segment_ids=atom_segment_ids)
 
     input_char_embedddings = tf.Print(input_char_embedddings,
-                                  [input_char_embedddings[:2,:10,:]],
+                                  [input_char_embedddings[:2,:10,:3]],
                                   "input_char_embedddings",
                                   summarize=-1,
     )
