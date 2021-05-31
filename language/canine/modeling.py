@@ -194,7 +194,7 @@ class CanineModel:
                                                      char_attention_mask)
 
     input_char_encoding = tf.Print(input_char_encoding,
-                                  [input_char_encoding],
+                                  [input_char_encoding[0,-3:,:3]],
                                   "input_char_encoding"
     )
 
