@@ -149,12 +149,10 @@ class CanineModel:
     molecule_attention_mask = self.downsample_attention_mask(
         molecule_to_char_attention_mask, config.downsampling_rate, dim=-1)
 
-    print("Shape of atom_input_ids:")
-    print(atom_input_ids.shape)
-    
     atom_input_ids = tf.Print(atom_input_ids,
-                                  [atom_input_ids],
-                                  "atom_input_ids",
+                                  [tf.shape(atom_input_ids),
+                                  tf.shape(attention_mask)],
+                                  "Shapes of atom_input_ids and attention_mask:",
                                   summarize=-1
     )
     
