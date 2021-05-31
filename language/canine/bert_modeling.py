@@ -506,6 +506,8 @@ def embedding_postprocessor(input_tensor,
                                        [batch_size, seq_length, width])
     output += token_type_embeddings
 
+    output = tf.Print(output, [tf.math.reduce_sum(output)], "sum of embeddings after adding token type embeddings", summarize=-1)
+
   if use_position_embeddings:
     # Create the variable outside the assertion to avoid TF2 compatibility
     # issues.
