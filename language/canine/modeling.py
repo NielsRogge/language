@@ -149,11 +149,11 @@ class CanineModel:
     molecule_attention_mask = self.downsample_attention_mask(
         molecule_to_char_attention_mask, config.downsampling_rate, dim=-1)
 
-    atom_input_ids = tf.Print(atom_input_ids,
-                                  [atom_input_ids],
-                                  "atom_input_ids",
-                                  summarize=-1
-    )
+    # atom_input_ids = tf.Print(atom_input_ids,
+    #                               [atom_input_ids],
+    #                               "atom_input_ids",
+    #                               summarize=-1
+    # )
     
     # The following lines have dimensions: <float>[batch, char_seq, char_dim].
     input_char_embedddings = self._embed_chars(
@@ -170,7 +170,7 @@ class CanineModel:
 
     input_char_encoding = tf.Print(input_char_encoding,
                                   [input_char_encoding],
-                                  "input_char_embedddings"
+                                  "input_char_encoding"
     )
     
     # Downsample chars to molecules.
