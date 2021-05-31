@@ -161,14 +161,18 @@ class CanineModel:
 
     input_char_embedddings = tf.Print(input_char_embedddings,
                                   [input_char_embedddings],
-                                  "input_char_embedddings",
-                                  summarize=-1
+                                  "input_char_embedddings"
     )
     
     # Contextualize character embeddings.
     input_char_encoding = self._encode_initial_chars(input_char_embedddings,
                                                      char_attention_mask)
 
+    input_char_encoding = tf.Print(input_char_encoding,
+                                  [input_char_encoding],
+                                  "input_char_embedddings"
+    )
+    
     # Downsample chars to molecules.
     # The following lines have dimensions: [batch, molecule_seq, molecule_dim].
     # In this transformation, we change the dimensionality from `char_dim` to
@@ -202,6 +206,11 @@ class CanineModel:
         molecule_seq_length=molecule_seq_length,
         final_seq_char_positions=final_seq_char_positions)
 
+    final_char_encoding = tf.Print(final_char_encoding,
+                                  [final_char_encoding],
+                                  "final_char_encoding"
+    )
+    
     # For pooling (sequence-level tasks), we use only the output of the deep
     # BERT stack since we would end up with reduced dimensionality at each
     # character position.
