@@ -206,8 +206,8 @@ class CanineModel:
         molecule_seq_length=molecule_seq_length,
         final_seq_char_positions=final_seq_char_positions)
 
-    final_char_encoding = tf.Print(final_char_encoding,
-                                  [final_char_encoding],
+    self.final_char_encoding = tf.Print(self.final_char_encoding,
+                                  [self.final_char_encoding],
                                   "final_char_encoding"
     )
     
