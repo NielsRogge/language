@@ -180,7 +180,8 @@ class CanineModel:
 
     input_char_embedddings = tf.Print(input_char_embedddings,
                                   [input_char_embedddings[:2,:10,:]],
-                                  "input_char_embedddings"
+                                  "input_char_embedddings",
+                                  summarize=-1,
     )
 
     input_char_embedddings = tf.Print(input_char_embedddings,
